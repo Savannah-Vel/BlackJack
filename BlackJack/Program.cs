@@ -63,22 +63,35 @@ namespace BlackJack
             {"KD", 10},
             {"KC", 10}
         };
-        public IEnumerable<TValue> RandomValues<TKey, TValue>(IDictionary<TKey, TValue> dict)
+        Random rand = new Random();
+        public KeyValuePair<string,int> GetRandomCard()
         {
-            Random rand = new Random();
-            List<TValue> values = Enumerable.ToList(Dict.Values);
+            return cardDeck.ElementAt(rand.Next(0, cardDeck.Count));   
         }
 
+        public void Dealing()
+        {
+            var deal = GetRandomCard();
+            for (int i = 0; i < 4; i++)
+            {
+                Console.WriteLine(GetRandomCard());
+            }
 
+        }
 
-        //static void Main(string[] args)
-        //{
-        //    // The code provided will print ‘Hello World’ to the console.
-        //    // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-        //    Console.WriteLine("Hello World!");
-        //    Console.ReadKey();
+        // write method to remove card from list after being dealt
+        // deal from one player to the 
 
-        //    // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
-        //}
+        static void Main(string[] args)
+        {
+            var program = new Program();
+            program.Dealing();
+            for (int i = 0; i < 100; i++)
+            {
+               // Console.WriteLine(program.GetRandomCard());
+            }
+            
+            Console.ReadKey();
+        }
     }
 }
