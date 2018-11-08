@@ -4,22 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlackJack
-{
-    class Program
+    namespace _21
     {
-        public static Helper helper = new Helper();
-        static void Main(string[] args)
+        class Program
         {
-            helper.Dealing();
-            for (int i = 0; i < 100; i++)
+        
+
+        static void Main(string[] args)
             {
-               // Console.WriteLine(program.GetRandomCard());
+            var x = new BlackJack();
+            x.Deal();
+                foreach (var item in new CreateDeck().Deck)
+                {
+                  //  Console.WriteLine(item.DisplayName);
+                }
+                Console.ReadLine();
             }
-            
-            Console.ReadKey();
+
+
+        
 
         
         }
     }
-}
