@@ -58,31 +58,38 @@ namespace _21
     public class BlackJack
 
     {
-        public List<string> User = new List<string>();
-        public List<string> Dealer = new List<string>();
+        public Random rnd = new Random();
+        public List<int> User = new List<int>();
+        public List<int> Dealer = new List<int>();
         public void Deal()
         {
-            Random rand = new Random();
-            var cardDealt = new Card().DisplayName;
-            var deck = new CreateDeck().;
-            deck.
-
-            for (int i = 0; i < 4; i++)
-            {
-                Console.WriteLine(GetRandomCard());
-            }
+            //var cardDealt = new Card().DisplayName;
+            var deck = new CreateDeck().Deck;
+            int index;
+            
+            //for (int i = 0; i < 4; i++)
+            //{
+                
+            //    Console.WriteLine(cardDealt);
+            //}
 
             for (int i = 0; i < 2; i++)
             {
-                User.Add(cardDealt);
-                Dealer.Add(cardDealt);
+                index = rnd.Next(deck.Count);
+                var value = deck[index].CardValue;
+                User.Add(value);
+                index = rnd.Next(deck.Count);
+                value = deck[index].CardValue;
+                Dealer.Add(value);
             }
             Console.WriteLine(User[0]);
-            Console.WriteLine(User[1]);
             Console.WriteLine(Dealer[0]);
+            Console.WriteLine(User[1]);
             Console.WriteLine(Dealer[1]);
 
-
+            //split card dealt into dealing per person
+            //edit writeline to make readable for player
+            //add method to total cards
 
         }
     }
