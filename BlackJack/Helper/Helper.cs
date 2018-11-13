@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace _21
 {
@@ -61,36 +62,55 @@ namespace _21
         public Random rnd = new Random();
         public List<int> User = new List<int>();
         public List<int> Dealer = new List<int>();
-        public void Deal()
+
+        public int DealSingleHand()
         {
-            //var cardDealt = new Card().DisplayName;
             var deck = new CreateDeck().Deck;
             int index;
-            
-            //for (int i = 0; i < 4; i++)
-            //{
-                
-            //    Console.WriteLine(cardDealt);
-            //}
-
-            for (int i = 0; i < 2; i++)
+            int value = 0;
+            for (int i = 0; i < 1; i++)
             {
                 index = rnd.Next(deck.Count);
-                var value = deck[index].CardValue;
-                User.Add(value);
-                index = rnd.Next(deck.Count);
                 value = deck[index].CardValue;
+            }
+            return value;
+        }
+        public List<int> Deal()
+        {
+            int value;
+            for (int i = 0; i < 2; i++)
+            {
+                value = DealSingleHand();
+                User.Add(value);
+                value = DealSingleHand();
                 Dealer.Add(value);
             }
-            Console.WriteLine(User[0]);
-            Console.WriteLine(Dealer[0]);
-            Console.WriteLine(User[1]);
-            Console.WriteLine(Dealer[1]);
 
+            Console.WriteLine("Dealer's Hand");
+            Console.WriteLine(Dealer[0]);
+            Console.WriteLine("[hidden]");
+            //Console.WriteLine(Dealer[1]);
+            Console.WriteLine("Player's Hand");
+            Console.WriteLine(User[1]);
+            Console.WriteLine(User[0]);
+            Console.WriteLine("Card Total");
+            CardsTotal();
+
+            //var playerTotal = User.Sum();
+            //Console.WriteLine("Card Total");
+            //
+            return User;
+            //return Dealer;
             //split card dealt into dealing per person
             //edit writeline to make readable for player
             //add method to total cards
 
+        }
+
+        public void CardsTotal()
+        {
+            var playerTotal = User.Sum();
+            Console.WriteLine(playerTotal);
         }
     }
 }
