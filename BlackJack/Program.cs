@@ -81,7 +81,7 @@ using System.Threading.Tasks;
             {
                 Dealer.Add(value);
             }
-            //Player.Add(value);
+
         }
         public static List<int> Deal()
         {
@@ -133,28 +133,23 @@ using System.Threading.Tasks;
 
 
             }
-            if (playerTotal <= 10)
+            if (playerTotal < 21)
             {
+
                 DealSingleCard("Player");
-
+                var playerCards = string.Join(",",Player);
+                Console.WriteLine("Player's cards");
+                Console.WriteLine(playerCards);
+                
 
                 //Console.WriteLine(playerTotal);
             }
 
-            if (playerTotal > 10 && playerTotal < 15)
-            {
-                DealSingleCard("Dealer");
-                //Console.WriteLine(playerTotal);
-            }
-            else
-            {
-                Console.WriteLine("No blackjack!");
-            }
-
-            //if (playerTotal <= 10)
-            //{
-            //    DealSingleHand;
-            //}
+            /*
+             1 - Need "hit" input
+             2 - Need "stay" input
+             3 - if total is over 21 - cw error message
+             */
         }
         public class Card
         {
